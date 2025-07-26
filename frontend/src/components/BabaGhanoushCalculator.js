@@ -285,11 +285,17 @@ const BabaGhanoushCalculator = () => {
         </div>
 
         {/* Input Section */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-6 border border-orange-100">
+        <div className={`backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-6 border transition-all duration-500 ${
+          darkMode 
+            ? 'bg-gray-800/90 border-gray-700' 
+            : 'bg-white/90 border-orange-100'
+        }`}>
           {/* Quantity Input */}
           <div className="mb-6">
-            <label className="block text-lg font-bold text-gray-700 mb-3 flex items-center gap-2">
-              <Calculator className="w-5 h-5 text-orange-500" />
+            <label className={`block text-lg font-bold mb-3 flex items-center gap-2 transition-all duration-500 ${
+              darkMode ? 'text-gray-200' : 'text-gray-700'
+            }`}>
+              <Calculator className={`w-5 h-5 ${darkMode ? 'text-blue-400' : 'text-orange-500'}`} />
               الكمية المطلوبة (كيلوجرام)
             </label>
             <div className="relative">
@@ -300,9 +306,17 @@ const BabaGhanoushCalculator = () => {
                 min="1"
                 step="0.1"
                 placeholder="مثال: 50"
-                className="w-full pl-16 pr-4 py-4 text-lg font-bold bg-gradient-to-r from-orange-50 to-red-50 border-2 border-orange-200 rounded-2xl focus:border-orange-400 focus:ring-4 focus:ring-orange-100 outline-none transition-all duration-300 shadow-inner"
+                className={`w-full pl-16 pr-4 py-4 text-lg font-bold border-2 rounded-2xl focus:ring-4 outline-none transition-all duration-300 shadow-inner ${
+                  darkMode 
+                    ? 'bg-gray-700 border-gray-600 text-white focus:border-blue-400 focus:ring-blue-100/20 placeholder-gray-400' 
+                    : 'bg-gradient-to-r from-orange-50 to-red-50 border-orange-200 focus:border-orange-400 focus:ring-orange-100'
+                }`}
               />
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1 rounded-lg text-sm font-bold shadow-lg">
+              <span className={`absolute left-4 top-1/2 -translate-y-1/2 text-white px-3 py-1 rounded-lg text-sm font-bold shadow-lg transition-all duration-500 ${
+                darkMode 
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-500' 
+                  : 'bg-gradient-to-r from-orange-500 to-red-500'
+              }`}>
                 كجم
               </span>
             </div>
@@ -310,17 +324,27 @@ const BabaGhanoushCalculator = () => {
 
           {/* Portions Input */}
           <div className="mb-6">
-            <div className="flex items-center justify-between bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-4 border-2 border-orange-200">
+            <div className={`flex items-center justify-between rounded-2xl p-4 border-2 transition-all duration-500 ${
+              darkMode 
+                ? 'bg-gray-700 border-gray-600' 
+                : 'bg-gradient-to-r from-orange-50 to-red-50 border-orange-200'
+            }`}>
               <div className="flex items-center gap-3">
-                <Utensils className="w-5 h-5 text-orange-500" />
-                <span className="text-lg font-bold text-gray-700">عدد الحلل:</span>
+                <Utensils className={`w-5 h-5 ${darkMode ? 'text-blue-400' : 'text-orange-500'}`} />
+                <span className={`text-lg font-bold transition-all duration-500 ${
+                  darkMode ? 'text-gray-200' : 'text-gray-700'
+                }`}>عدد الحلل:</span>
               </div>
               <input
                 type="number"
                 value={portions}
                 onChange={(e) => setPortions(parseInt(e.target.value))}
                 min="1"
-                className="w-20 px-3 py-2 text-lg font-bold text-center bg-white border-2 border-orange-200 rounded-xl focus:border-orange-400 focus:ring-2 focus:ring-orange-100 outline-none shadow-inner"
+                className={`w-20 px-3 py-2 text-lg font-bold text-center border-2 rounded-xl focus:ring-2 outline-none shadow-inner transition-all duration-500 ${
+                  darkMode 
+                    ? 'bg-gray-600 border-gray-500 text-white focus:border-blue-400 focus:ring-blue-100/20' 
+                    : 'bg-white border-orange-200 focus:border-orange-400 focus:ring-orange-100'
+                }`}
               />
             </div>
           </div>
@@ -328,7 +352,11 @@ const BabaGhanoushCalculator = () => {
           {/* Calculate Button */}
           <button
             onClick={calculate}
-            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-xl font-bold py-4 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group"
+            className={`w-full text-white text-xl font-bold py-4 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group ${
+              darkMode 
+                ? 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600' 
+                : 'bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600'
+            }`}
           >
             <Calculator className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
             احسب المقادير الآن
