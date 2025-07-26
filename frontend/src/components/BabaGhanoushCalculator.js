@@ -435,18 +435,30 @@ const BabaGhanoushCalculator = () => {
         )}
 
         {/* Action Buttons */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-6 mb-6 border border-orange-100">
+        <div className={`backdrop-blur-sm rounded-3xl shadow-2xl p-6 mb-6 border transition-all duration-500 ${
+          darkMode 
+            ? 'bg-gray-800/90 border-gray-700' 
+            : 'bg-white/90 border-orange-100'
+        }`}>
           <div className="flex gap-4">
             <button
               onClick={() => setShowHistoryModal(true)}
-              className="flex-1 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
+              className={`flex-1 text-white font-bold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 ${
+                darkMode 
+                  ? 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600' 
+                  : 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600'
+              }`}
             >
               <History className="w-5 h-5" />
               سجل التغييرات
             </button>
             <button
               onClick={() => setShowIngredientsModal(true)}
-              className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
+              className={`flex-1 text-white font-bold py-3 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 ${
+                darkMode 
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600' 
+                  : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600'
+              }`}
             >
               <Settings className="w-5 h-5" />
               إدارة المكونات
@@ -455,7 +467,9 @@ const BabaGhanoushCalculator = () => {
         </div>
 
         {/* Footer */}
-        <div className="text-center text-gray-600 py-4">
+        <div className={`text-center py-4 transition-all duration-500 ${
+          darkMode ? 'text-gray-400' : 'text-gray-600'
+        }`}>
           <p className="font-bold">© كافتيريا أبو حيدر | تأسست ١٩٦٠ | جميع الحقوق محفوظة</p>
         </div>
       </div>
