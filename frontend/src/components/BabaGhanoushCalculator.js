@@ -365,39 +365,67 @@ const BabaGhanoushCalculator = () => {
 
         {/* Results Section */}
         {result && (
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-6 border border-orange-100 animate-fade-in">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-              <ChefHat className="w-6 h-6 text-orange-500" />
+          <div className={`backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-6 border animate-fade-in transition-all duration-500 ${
+            darkMode 
+              ? 'bg-gray-800/90 border-gray-700' 
+              : 'bg-white/90 border-orange-100'
+          }`}>
+            <h3 className={`text-2xl font-bold mb-6 flex items-center gap-3 transition-all duration-500 ${
+              darkMode ? 'text-gray-200' : 'text-gray-800'
+            }`}>
+              <ChefHat className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-orange-500'}`} />
               المقادير المطلوبة لـ {result.quantity} كيلو بابا غنوج
             </h3>
             
             <div className="grid gap-4 mb-8">
               {result.total.map((item, index) => (
-                <div key={index} className="flex items-center justify-between bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-4 border border-orange-200 hover:shadow-lg transition-all duration-300">
+                <div key={index} className={`flex items-center justify-between rounded-2xl p-4 border hover:shadow-lg transition-all duration-300 ${
+                  darkMode 
+                    ? 'bg-gray-700 border-gray-600' 
+                    : 'bg-gradient-to-r from-orange-50 to-red-50 border-orange-200'
+                }`}>
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{ingredientIcons[item.name] || '🌿'}</span>
-                    <span className="text-lg font-bold text-gray-700">{item.name}</span>
+                    <span className={`text-lg font-bold transition-all duration-500 ${
+                      darkMode ? 'text-gray-200' : 'text-gray-700'
+                    }`}>{item.name}</span>
                   </div>
-                  <span className="text-lg font-bold text-orange-600 bg-white px-3 py-1 rounded-lg shadow-sm">
+                  <span className={`text-lg font-bold px-3 py-1 rounded-lg shadow-sm transition-all duration-500 ${
+                    darkMode 
+                      ? 'text-blue-400 bg-gray-600' 
+                      : 'text-orange-600 bg-white'
+                  }`}>
                     {item.displayValue} {item.unit}
                   </span>
                 </div>
               ))}
             </div>
 
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-              <Utensils className="w-6 h-6 text-orange-500" />
+            <h3 className={`text-2xl font-bold mb-6 flex items-center gap-3 transition-all duration-500 ${
+              darkMode ? 'text-gray-200' : 'text-gray-800'
+            }`}>
+              <Utensils className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-orange-500'}`} />
               المقادير لكل حلة ({result.portions} حلل)
             </h3>
             
             <div className="grid gap-4">
               {result.perPot.map((item, index) => (
-                <div key={index} className="flex items-center justify-between bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-4 border border-blue-200 hover:shadow-lg transition-all duration-300">
+                <div key={index} className={`flex items-center justify-between rounded-2xl p-4 border hover:shadow-lg transition-all duration-300 ${
+                  darkMode 
+                    ? 'bg-gray-700 border-gray-600' 
+                    : 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200'
+                }`}>
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{ingredientIcons[item.name] || '🌿'}</span>
-                    <span className="text-lg font-bold text-gray-700">{item.name}</span>
+                    <span className={`text-lg font-bold transition-all duration-500 ${
+                      darkMode ? 'text-gray-200' : 'text-gray-700'
+                    }`}>{item.name}</span>
                   </div>
-                  <span className="text-lg font-bold text-blue-600 bg-white px-3 py-1 rounded-lg shadow-sm">
+                  <span className={`text-lg font-bold px-3 py-1 rounded-lg shadow-sm transition-all duration-500 ${
+                    darkMode 
+                      ? 'text-purple-400 bg-gray-600' 
+                      : 'text-blue-600 bg-white'
+                  }`}>
                     {item.displayValue} {item.unit}
                   </span>
                 </div>
