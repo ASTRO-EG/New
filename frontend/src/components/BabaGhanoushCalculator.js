@@ -40,6 +40,7 @@ const BabaGhanoushCalculator = () => {
     const savedIngredients = localStorage.getItem('baba_ghanoush_ingredients');
     const savedChanges = localStorage.getItem('baba_ghanoush_changes_history');
     const savedCalculations = localStorage.getItem('baba_ghanoush_calculations_history');
+    const savedDarkMode = localStorage.getItem('baba_ghanoush_dark_mode');
 
     if (savedIngredients) {
       setIngredients(JSON.parse(savedIngredients));
@@ -50,7 +51,16 @@ const BabaGhanoushCalculator = () => {
     if (savedCalculations) {
       setCalculationsHistory(JSON.parse(savedCalculations));
     }
+    if (savedDarkMode) {
+      setDarkMode(JSON.parse(savedDarkMode));
+    }
   }, []);
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    localStorage.setItem('baba_ghanoush_dark_mode', JSON.stringify(newDarkMode));
+  };
 
   const calculate = () => {
     const qty = parseFloat(quantity);
