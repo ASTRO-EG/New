@@ -224,30 +224,61 @@ const BabaGhanoushCalculator = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 p-4 font-arabic" dir="rtl">
+    <div className={`min-h-screen p-4 font-arabic transition-all duration-500 ${
+      darkMode 
+        ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' 
+        : 'bg-gradient-to-br from-amber-50 via-orange-50 to-red-50'
+    }`} dir="rtl">
       <div className="max-w-2xl mx-auto">
+        {/* Dark Mode Toggle */}
+        <div className="flex justify-end mb-4">
+          <button
+            onClick={toggleDarkMode}
+            className={`p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${
+              darkMode 
+                ? 'bg-yellow-500 hover:bg-yellow-400 text-white' 
+                : 'bg-indigo-600 hover:bg-indigo-700 text-white'
+            }`}
+          >
+            {darkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+          </button>
+        </div>
+
         {/* Header Section */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-6 border border-orange-100">
+        <div className={`backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-6 border transition-all duration-500 ${
+          darkMode 
+            ? 'bg-gray-800/90 border-gray-700' 
+            : 'bg-white/90 border-orange-100'
+        }`}>
           <div className="text-center">
             {/* Logo */}
             <div className="relative inline-block mb-6">
-              <div className="w-28 h-28 bg-gradient-to-br from-orange-400 to-red-500 rounded-full p-1 shadow-xl">
+              <div className={`w-32 h-32 rounded-full shadow-2xl transition-all duration-500 ${
+                darkMode 
+                  ? 'bg-gradient-to-br from-blue-500 to-purple-600' 
+                  : 'bg-gradient-to-br from-orange-400 to-red-500'
+              }`}>
                 <img 
                   src="https://i.ibb.co/cHrQjBG/logo.jpg" 
                   alt="كافتيريا أبو حيدر" 
-                  className="w-full h-full rounded-full object-cover bg-white p-1"
+                  className="w-full h-full rounded-full object-cover border-4 border-white shadow-xl"
                 />
               </div>
-              <div className="absolute -top-2 -left-2 w-32 h-32 bg-gradient-to-br from-orange-300/30 to-red-400/30 rounded-full blur-xl"></div>
             </div>
             
             {/* Title */}
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-4">
+            <h1 className={`text-4xl font-bold mb-4 transition-all duration-500 ${
+              darkMode 
+                ? 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent' 
+                : 'bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent'
+            }`}>
               حاسبة مقادير بابا غنوج
             </h1>
             
             {/* Description */}
-            <p className="text-gray-600 text-lg leading-relaxed max-w-md mx-auto">
+            <p className={`text-lg leading-relaxed max-w-md mx-auto transition-all duration-500 ${
+              darkMode ? 'text-gray-300' : 'text-gray-600'
+            }`}>
               أدخل الكمية المطلوبة وعدد الحلل، وسنقوم بحساب جميع المقادير اللازمة لك بدقة متناهية
             </p>
           </div>
