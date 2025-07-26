@@ -603,18 +603,32 @@ const BabaGhanoushCalculator = () => {
       {/* History Modal */}
       {showHistoryModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white rounded-t-3xl border-b border-gray-200 p-6">
+          <div className={`rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transition-all duration-500 ${
+            darkMode 
+              ? 'bg-gray-800 border-2 border-gray-700' 
+              : 'bg-white border-2 border-orange-100'
+          }`}>
+            <div className={`sticky top-0 rounded-t-3xl border-b p-6 transition-all duration-500 ${
+              darkMode 
+                ? 'bg-gray-800 border-gray-700' 
+                : 'bg-white border-gray-200'
+            }`}>
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                  <History className="w-6 h-6 text-blue-500" />
+                <h2 className={`text-2xl font-bold flex items-center gap-3 transition-all duration-500 ${
+                  darkMode ? 'text-gray-200' : 'text-gray-800'
+                }`}>
+                  <History className={`w-6 h-6 ${darkMode ? 'text-blue-400' : 'text-blue-500'}`} />
                   سجل التغييرات
                 </h2>
                 <button
                   onClick={() => setShowHistoryModal(false)}
-                  className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                  className={`p-2 rounded-full transition-colors duration-200 ${
+                    darkMode 
+                      ? 'hover:bg-gray-700 text-gray-400' 
+                      : 'hover:bg-gray-100 text-gray-500'
+                  }`}
                 >
-                  <X className="w-6 h-6 text-gray-500" />
+                  <X className="w-6 h-6" />
                 </button>
               </div>
               
@@ -624,8 +638,12 @@ const BabaGhanoushCalculator = () => {
                   onClick={() => setActiveTab('changes')}
                   className={`px-4 py-2 rounded-xl font-bold transition-all duration-200 ${
                     activeTab === 'changes'
-                      ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      ? darkMode 
+                        ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg'
+                        : 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg'
+                      : darkMode
+                        ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
                   تعديلات المكونات
@@ -634,8 +652,12 @@ const BabaGhanoushCalculator = () => {
                   onClick={() => setActiveTab('calculations')}
                   className={`px-4 py-2 rounded-xl font-bold transition-all duration-200 ${
                     activeTab === 'calculations'
-                      ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      ? darkMode 
+                        ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg'
+                        : 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg'
+                      : darkMode
+                        ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
                   عمليات الحساب
@@ -647,12 +669,22 @@ const BabaGhanoushCalculator = () => {
               {activeTab === 'changes' ? (
                 <div className="space-y-4">
                   {changesHistory.length === 0 ? (
-                    <p className="text-center text-gray-500 py-8">لا توجد تغييرات مسجلة</p>
+                    <p className={`text-center py-8 transition-all duration-500 ${
+                      darkMode ? 'text-gray-400' : 'text-gray-500'
+                    }`}>لا توجد تغييرات مسجلة</p>
                   ) : (
                     changesHistory.map((record, index) => (
-                      <div key={index} className="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-4 border border-orange-200">
-                        <div className="font-bold text-orange-600 mb-2">{record.date}</div>
-                        <div className="text-gray-700">{record.action}</div>
+                      <div key={index} className={`rounded-2xl p-4 border transition-all duration-500 ${
+                        darkMode 
+                          ? 'bg-gray-700 border-gray-600' 
+                          : 'bg-gradient-to-r from-orange-50 to-red-50 border-orange-200'
+                      }`}>
+                        <div className={`font-bold mb-2 transition-all duration-500 ${
+                          darkMode ? 'text-orange-400' : 'text-orange-600'
+                        }`}>{record.date}</div>
+                        <div className={`transition-all duration-500 ${
+                          darkMode ? 'text-gray-300' : 'text-gray-700'
+                        }`}>{record.action}</div>
                       </div>
                     ))
                   )}
@@ -660,12 +692,22 @@ const BabaGhanoushCalculator = () => {
               ) : (
                 <div className="space-y-4">
                   {calculationsHistory.length === 0 ? (
-                    <p className="text-center text-gray-500 py-8">لا توجد عمليات حساب مسجلة</p>
+                    <p className={`text-center py-8 transition-all duration-500 ${
+                      darkMode ? 'text-gray-400' : 'text-gray-500'
+                    }`}>لا توجد عمليات حساب مسجلة</p>
                   ) : (
                     calculationsHistory.map((record, index) => (
-                      <div key={index} className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-4 border border-blue-200">
-                        <div className="font-bold text-blue-600 mb-2">{record.date}</div>
-                        <div className="text-gray-700">{record.action}</div>
+                      <div key={index} className={`rounded-2xl p-4 border transition-all duration-500 ${
+                        darkMode 
+                          ? 'bg-gray-700 border-gray-600' 
+                          : 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200'
+                      }`}>
+                        <div className={`font-bold mb-2 transition-all duration-500 ${
+                          darkMode ? 'text-blue-400' : 'text-blue-600'
+                        }`}>{record.date}</div>
+                        <div className={`transition-all duration-500 ${
+                          darkMode ? 'text-gray-300' : 'text-gray-700'
+                        }`}>{record.action}</div>
                       </div>
                     ))
                   )}
