@@ -477,32 +477,54 @@ const BabaGhanoushCalculator = () => {
       {/* Ingredients Modal */}
       {showIngredientsModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white rounded-t-3xl border-b border-gray-200 p-6">
+          <div className={`rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transition-all duration-500 ${
+            darkMode 
+              ? 'bg-gray-800 border-2 border-gray-700' 
+              : 'bg-white border-2 border-orange-100'
+          }`}>
+            <div className={`sticky top-0 rounded-t-3xl border-b p-6 transition-all duration-500 ${
+              darkMode 
+                ? 'bg-gray-800 border-gray-700' 
+                : 'bg-white border-gray-200'
+            }`}>
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
-                  <Settings className="w-6 h-6 text-purple-500" />
+                <h2 className={`text-2xl font-bold flex items-center gap-3 transition-all duration-500 ${
+                  darkMode ? 'text-gray-200' : 'text-gray-800'
+                }`}>
+                  <Settings className={`w-6 h-6 ${darkMode ? 'text-purple-400' : 'text-purple-500'}`} />
                   إدارة مكونات بابا غنوج
                 </h2>
                 <button
                   onClick={() => setShowIngredientsModal(false)}
-                  className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                  className={`p-2 rounded-full transition-colors duration-200 ${
+                    darkMode 
+                      ? 'hover:bg-gray-700 text-gray-400' 
+                      : 'hover:bg-gray-100 text-gray-500'
+                  }`}
                 >
-                  <X className="w-6 h-6 text-gray-500" />
+                  <X className="w-6 h-6" />
                 </button>
               </div>
             </div>
             
             <div className="p-6">
               {/* Add Ingredient Form */}
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-6 mb-6 border border-purple-200">
+              <div className={`rounded-2xl p-6 mb-6 border transition-all duration-500 ${
+                darkMode 
+                  ? 'bg-gray-700 border-gray-600' 
+                  : 'bg-gradient-to-r from-purple-50 to-pink-50 border-purple-200'
+              }`}>
                 <div className="grid gap-4 md:grid-cols-3">
                   <input
                     type="text"
                     value={newIngredientName}
                     onChange={(e) => setNewIngredientName(e.target.value)}
                     placeholder="اسم المكون (مثال: زيت زيتون)"
-                    className="px-4 py-3 bg-white border-2 border-purple-200 rounded-xl focus:border-purple-400 focus:ring-2 focus:ring-purple-100 outline-none"
+                    className={`px-4 py-3 border-2 rounded-xl focus:ring-2 outline-none transition-all duration-500 ${
+                      darkMode 
+                        ? 'bg-gray-600 border-gray-500 text-white focus:border-purple-400 focus:ring-purple-100/20 placeholder-gray-400' 
+                        : 'bg-white border-purple-200 focus:border-purple-400 focus:ring-purple-100'
+                    }`}
                   />
                   <input
                     type="number"
@@ -510,7 +532,11 @@ const BabaGhanoushCalculator = () => {
                     onChange={(e) => setNewIngredientAmount(e.target.value)}
                     placeholder="الكمية لكل 100 كيلو"
                     step="0.001"
-                    className="px-4 py-3 bg-white border-2 border-purple-200 rounded-xl focus:border-purple-400 focus:ring-2 focus:ring-purple-100 outline-none"
+                    className={`px-4 py-3 border-2 rounded-xl focus:ring-2 outline-none transition-all duration-500 ${
+                      darkMode 
+                        ? 'bg-gray-600 border-gray-500 text-white focus:border-purple-400 focus:ring-purple-100/20 placeholder-gray-400' 
+                        : 'bg-white border-purple-200 focus:border-purple-400 focus:ring-purple-100'
+                    }`}
                   />
                   <button
                     onClick={addIngredient}
@@ -525,13 +551,21 @@ const BabaGhanoushCalculator = () => {
               {/* Ingredients List */}
               <div className="space-y-4 mb-6">
                 {Object.entries(ingredients).map(([name, amount]) => (
-                  <div key={name} className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-4 border border-gray-200">
+                  <div key={name} className={`rounded-2xl p-4 border transition-all duration-500 ${
+                    darkMode 
+                      ? 'bg-gray-700 border-gray-600' 
+                      : 'bg-gradient-to-r from-gray-50 to-gray-100 border-gray-200'
+                  }`}>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <span className="text-2xl">{ingredientIcons[name] || '🌿'}</span>
                         <div>
-                          <div className="font-bold text-gray-800">{name}</div>
-                          <div className="text-sm text-gray-600">{amount} كجم لكل 100 كيلو</div>
+                          <div className={`font-bold transition-all duration-500 ${
+                            darkMode ? 'text-gray-200' : 'text-gray-800'
+                          }`}>{name}</div>
+                          <div className={`text-sm transition-all duration-500 ${
+                            darkMode ? 'text-gray-400' : 'text-gray-600'
+                          }`}>{amount} كجم لكل 100 كيلو</div>
                         </div>
                       </div>
                       <div className="flex gap-2">
