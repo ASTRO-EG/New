@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calculator, ChefHat, History, Settings, Plus, Edit, Trash2, Save, X, Utensils } from 'lucide-react';
+import { Calculator, ChefHat, History, Settings, Plus, Edit, Trash2, Save, X, Utensils, Sun, Moon } from 'lucide-react';
 
 const BabaGhanoushCalculator = () => {
   // State management
