@@ -21,9 +21,10 @@ const BabaGhanoushCalculator = () => {
   const [changesHistory, setChangesHistory] = useState([]);
   const [calculationsHistory, setCalculationsHistory] = useState([]);
   const [activeTab, setActiveTab] = useState('changes');
+  const [darkMode, setDarkMode] = useState(false);
 
   const ingredientIcons = {
-    "طحينة": "🥜",
+    "طحينة": "⚪",
     "ليمون": "🍋",
     "ثوم": "🧄",
     "كمون": "🌿",
